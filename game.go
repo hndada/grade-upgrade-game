@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"math"
 	"math/rand"
 	"time"
 )
@@ -112,7 +111,8 @@ func (p Player) Status() string {
 
 func (p Player) IsClear() bool { return p.Grade >= Grade(len(GradeNames)-1) }
 func (p Player) Rest() {
-	ipEffect := 10*math.Log(float64(p.IQ+1)) + float64(p.IQ)
+	// ipEffect := 10*math.Log(float64(p.IQ+1)) + float64(p.IQ)
+	ipEffect := 5 + float64(p.IQ)
 	t := time.Second - time.Duration(ipEffect)*time.Millisecond - 750*time.Millisecond
 	time.Sleep(t)
 }
