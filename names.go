@@ -40,55 +40,22 @@ var BookNames = []string{
 	"구몬 학습",
 	"개념 유형 Lite", // Middle
 	"우공비",
+	"체크체크",
 	"쎈",
+	"일품",
+	"풍산자",
 	"개념원리 고등수학", // High
+	"고등예비과정",
+	"마플",
 	"수능 특강",
+	"수능 완성",
+	"숨마쿰라우데",
 	"수학의 정석",
 	"자이스토리",
 	"블랙라벨",
 	"Kreyszig 공업수학", // University
-	"Serge Lang 대수학",
+	"Jech 집합론",
+	"Munkres 위상수학",
+	"Rudin - 수치해석",
+	"Lang 대수학",
 }
-
-// const (
-// 	None     = iota
-// 	Primary1 // 1
-// 	Primary2
-// 	Primary3
-// 	Primary4
-// 	Primary5
-// 	Primary6
-// 	Middle1 // 7
-// 	Middle2
-// 	Middle3
-// 	High1 // 10
-// 	High2
-// 	High3
-// 	University1 // 13
-// 	University2
-// 	University3
-// 	University4
-// 	Master1 // 17
-// 	Master2
-// 	Doctor1 // 19
-// 	Doctor2
-// 	Doctor3
-// 	Doctor4
-// 	Professor // 23
-// )
-
-// const (
-// 	뚝딱3개월에숫자떼기 = iota // None
-// 	기탄수학 = iota // Primary
-// 	구몬학습
-// 	개념유형Lite // Middle
-// 	우공비
-// 	쎈수학
-// 	개념원리고등수학 // High
-// 	수능특강
-// 	수학의정석
-// 	자이스토리
-// 	블랙라벨
-// 	Kreyszig공업수학 // University
-// 	SergeLang대수학
-// )

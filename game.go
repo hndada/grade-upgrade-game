@@ -18,12 +18,6 @@ func gacha(cdf []float64) int {
 }
 
 type Grade int // Level
-//	func (g Grade) Output() int {
-//		// +0, +1, +2, +3, +4, +5
-//		// 0.54, 0.25, 0.125, 0.05, 0.02, 0.01, 0.005
-//		cdf := []float64{.54, .79, .915, .965, .985, .995, 1.0}
-//		return gacha(cdf)
-//	}
 func (g Grade) Output() float64 {
 	cdf := []float64{.5, .9, 1.0}
 	base := []float64{1, 18, 54}[gacha(cdf)]
@@ -87,25 +81,6 @@ type Player struct {
 	IQ int
 }
 
-// func NewPlayer() Player {
-// 	p := Player{
-// 		Grades:   make([]Grade, len(GradeNames)+5),
-// 		Semester: 0,
-// 		Book:     0,
-// 		IQ:       0,
-// 	}
-// 	p.Grades[0] = 1
-// 	return p
-// }
-// func (p Player) Grade() int {
-// 	for i := len(p.Grades) - 1; i >= 0; i-- {
-// 		if p.Grades[i] != 0 {
-// 			return i
-// 		}
-// 	}
-// 	return 0
-// }
-
 const (
 	None = iota
 	Normal
@@ -116,18 +91,14 @@ const (
 func (p *Player) Study() {
 	switch p.Book.Study() {
 	case None:
-		// fmt.Print("허탕 쳤습니다. ")
 	case Normal:
-		// fmt.Print("공부 했습니다. ")
 		p.Exp += p.Grade.Output()
 	case UpgradeBook:
 		if p.Book < Book(len(BookNames))-1 {
-			// fmt.Print("책을 업그레이드 했습니다. ")
 			p.Book++
 		}
 	case IQ:
 		p.IQ++
-		// fmt.Print("지능이 올랐습니다. ")
 	}
 }
 func (p Player) Status() string {
@@ -136,31 +107,16 @@ func (p Player) Status() string {
 	}
 	return fmt.Sprintf(
 		"%s (%.2f%%). %s 공부중⋯. IQ는 %d \n",
-		GradeNames[p.Grade], p.Exp, BookNames[p.Book], 100+p.IQ*5)
+		GradeNames[p.Grade], p.Exp, BookNames[p.Book], 100+p.IQ*2)
 }
 
 func (p Player) IsClear() bool { return p.Grade >= Grade(len(GradeNames)-1) }
-
-//	func (p *Player) Test() {
-//		for i, v := range p.Grades {
-//			if v >= 2 {
-//				if Grade(i).Pass() {
-//					p.Grades[i] -= 2
-//					p.Grades[i+1]++
-//				} else {
-//					p.Grades[i]--
-//				}
-//			}
-//		}
-//	}
-
 func (p Player) Rest() {
-	ipEffect := 10 * math.Log(float64(p.IQ+1))
+	ipEffect := 10*math.Log(float64(p.IQ+1)) + float64(p.IQ)
 	t := time.Second - time.Duration(ipEffect)*time.Millisecond - 750*time.Millisecond
 	time.Sleep(t)
 }
 func main() {
-	// p := NewPlayer()
 	p := Player{}
 	count := 0
 	for !p.IsClear() {
@@ -178,4 +134,5 @@ func main() {
 		p.Rest()
 		count++
 	}
+	time.Sleep(time.Hour)
 }
